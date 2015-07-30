@@ -1,7 +1,9 @@
+var ClosureCompilerPlugin = require('webpack-closure-compiler');
+
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/client/app.js',
   output: {
-    filename: 'build/bundle.js'
+    filename: './src/client/bundle.js'
   },
   module: {
     loaders: [
@@ -10,5 +12,11 @@ module.exports = {
       { test: /\.less$/, loader: 'style!css!less' },
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' } // inline base64 URLs for <=8k images, direct URLs for the rest
     ]
-  }
+  },
+  externals: {
+    'react': 'React'
+  },
+  plugins: [
+    new ClosureCompilerPlugin()
+  ]
 };
