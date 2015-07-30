@@ -1,4 +1,4 @@
-var React = require('React');
+var React = require('react');
 require('./app.less');
 
 var App = React.createClass({
